@@ -1,17 +1,25 @@
 package com.qc.developer.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.qc.developer.repository.CarRepository;
+
 import java.util.Collection;
 import java.util.stream.Collectors;
 
 @RestController
 class CoolCarController {
+
+	//@Autowired
     private CarRepository repository;
 
+	
     public CoolCarController(CarRepository repository) {
         this.repository = repository;
     }
+    
 
     @GetMapping("/cool-cars")
     public Collection<Car> coolCars() {
