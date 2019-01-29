@@ -27,7 +27,6 @@ export class CarService {
   		result = this.http.put(car.href, car);
   		
   	} else {
-  		console.log(this.CAR_API);
   		result = this.http.post(this.CAR_API, car);
   	}
   	

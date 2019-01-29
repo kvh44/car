@@ -21,11 +21,13 @@ export class CarEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log(this.route.params);
     this.sub = this.route.params.subscribe(params => {
       const id = params['id'];
       if (id) {
         this.carService.get(id).subscribe((car: any) => {
           if (car) {
+            console.log(car);
             this.car = car;
             this.car.href = car._links.self.href;
             this.giphyService.get(car.name).subscribe(url => car.giphyUrl = url);
@@ -39,6 +41,7 @@ export class CarEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    console.log('ngOnDestroy');
     this.sub.unsubscribe();
   }
 
