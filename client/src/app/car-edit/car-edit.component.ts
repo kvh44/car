@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from '../shared/car/car.service';
 import { GiphyService } from '../shared/giphy/giphy.service';
 import { NgForm } from '@angular/forms';
+import {ViewChild, ElementRef} from '@angular/core';
+
 @Component({
   selector: 'app-car-edit',
   templateUrl: './car-edit.component.html',
@@ -14,6 +16,9 @@ export class CarEditComponent implements OnInit, OnDestroy {
 
   sub: Subscription;
 
+  @ViewChild('carForm')
+  carForm: ElementRef;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private carService: CarService,
@@ -22,6 +27,7 @@ export class CarEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log(this.route.params);
+    console.log(this.carForm);
     this.sub = this.route.params.subscribe(params => {
       const id = params['id'];
       if (id) {

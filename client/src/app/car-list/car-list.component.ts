@@ -18,7 +18,7 @@ cars: Array<any>;
           this.cars = data;
 
           for (const car of this.cars) {
-              this.giphyService.get(car.name).subscribe(url => car.giphyUrl = url);
+              this.giphyService.get(car.name).subscribe(function(url) {car.giphyUrl = url} );
           }
       })
       ;
