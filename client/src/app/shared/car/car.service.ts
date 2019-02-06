@@ -16,7 +16,7 @@ export class CarService {
   	return this.http.get(this.API + '/cool-cars');
   }
   
-  get(id: String) {
+  get(id: String): Observable<any>  {
   	return this.http.get(this.CAR_API + '/' +id);
   }
   
@@ -29,6 +29,9 @@ export class CarService {
   	} else {
   		result = this.http.post(this.CAR_API, car);
   	}
+
+    console.log('save result: ');
+  	console.log(result);
   	
   	return result;
   }
