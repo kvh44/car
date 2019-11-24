@@ -9,9 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class Boot211ApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+
 
 }
 

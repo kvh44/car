@@ -6,7 +6,37 @@ services:
       context: .
       dockerfile: Dockerfile
     image: boot211:latest
+    networks:
+      boot211-network:
+        aliases:
+          - boot211
+    depends_on:
+      - mysql20191117
     expose: 
       - 4100
     ports:
       - 4100:4100  
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql20191117/dshop?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=secret  
+      
+      
+  mysql20191117:
+    image: mysql
+    networks:
+      boot211-network:
+        aliases:
+          - mysql20191117
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=secret
+      - MYSQL_DATABASE=dshop
+      - MYSQL_ONETIME_PASSWORD=true    
+    #volumes:
+    #  [./data/, /var/lib/mysql] 
+      
+networks:
+  boot211-network:     
+      
